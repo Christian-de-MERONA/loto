@@ -8,7 +8,6 @@ let game = {
     },
     generateNumber: function(e){
         if (game.selectedNumbers.length >= 89) {
-            console.log(game.selectedNumbers)
             return;
         }
 
@@ -16,23 +15,25 @@ let game = {
             newNumber = Math.round(Math.random() * 100);
         } while (!game.isNumberSelectable(newNumber))
         
-        game.selectedNumbers.push(newNumber);
-        let lastNumber = document.querySelector('.last');
-        if (lastNumber) {
-            lastNumber.classList.remove('last');
-        }
-        
-        document.querySelectorAll('.cell').forEach(function(cell){
-            console.log(newNumber);
-            if (cell.textContent === newNumber.toString()){
-                cell.classList.add('selected', 'last');
-            }
-        })
+        game.formatCells(newNumber);
     },
     isNumberSelectable: function(num){
         return num <= 89 
             && num > 0
             && !game.selectedNumbers.includes(num);
+    },
+    formatCells: function(newNumber) {
+        game.selectedNumbers.push(newNumber);
+        let lastNumber = document.querySelector('.last');
+        if (lastNumber) {
+            lastNumber.classList.remove('last');
+        }
+    
+        document.querySelectorAll('.cell').forEach(function (cell) {
+            if (cell.textContent === newNumber.toString()) {
+                cell.classList.add('selected', 'last');
+            }
+        });
     }
 }
 
