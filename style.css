@@ -41,12 +41,29 @@
     background: white;
     color: black;
     text-align: center;
-    transition: background-color ease-in 0.5s;
+    transition: background-color ease-in 0.3s;
     line-height: 3rem;
     font-size: 2rem;
+}
+
+.cell.selected.last {
+    background-color: rgb(5, 218, 5);
+    color: black;
 }
 
 .cell.selected {
     background: blue;
     color: white;
+}
+
+@media screen and (max-width:500px) {
+    .result {
+        height: 66vh;
+    }
+
+    .cell {
+        font-size: 1.5rem;
+        height: calc(55vh / 9);
+        width: calc(88vw / 9);
+    }
 }

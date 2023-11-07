@@ -17,10 +17,15 @@ let game = {
         } while (!game.isNumberSelectable(newNumber))
         
         game.selectedNumbers.push(newNumber);
+        let lastNumber = document.querySelector('.last');
+        if (lastNumber) {
+            lastNumber.classList.remove('last');
+        }
+        
         document.querySelectorAll('.cell').forEach(function(cell){
             console.log(newNumber);
             if (cell.textContent === newNumber.toString()){
-                cell.classList.add('selected')
+                cell.classList.add('selected', 'last');
             }
         })
     },
